@@ -1,0 +1,346 @@
+#ifndef AwemeHeaders_h
+#define AwemeHeaders_h
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+// 前向声明必要的类
+@class AWEVideoModel;
+@class AWEMusicModel;
+@class AWEImageAlbumImageModel;
+@class AWEAwemeModel;
+@class CityManager;
+
+// AWENormalModeTabBarGeneralButton
+@interface AWENormalModeTabBarGeneralButton : UIButton
+@end
+
+// AWENormalModeTabBarBadgeContainerView
+@interface AWENormalModeTabBarBadgeContainerView : UIView
+@end
+
+// AWEFeedContainerContentView
+@interface AWEFeedContainerContentView : UIView
+- (UIViewController *)findViewController:(UIViewController *)vc ofClass:(Class)targetClass;
+@end
+
+// AWELeftSideBarEntranceView
+@interface AWELeftSideBarEntranceView : UIView
+@end
+
+// AWEDanmakuContentLabel
+@interface AWEDanmakuContentLabel : UILabel
+- (UIColor *)colorFromHexString:(NSString *)hexString baseColor:(UIColor *)baseColor;
+@end
+
+// AWELandscapeFeedEntryView
+@interface AWELandscapeFeedEntryView : UIView
+@end
+
+// AWEPlayInteractionViewController
+@interface AWEPlayInteractionViewController : UIViewController
+@property (nonatomic, strong) UIView *view;
+@property (nonatomic, strong) AWEAwemeModel *model;
+- (void)performCommentAction;
+- (void)onVideoPlayerViewDoubleClicked:(UITapGestureRecognizer *)tapGes;
+@end
+
+// UIView 分类
+@interface UIView (Transparency)
+- (UIViewController *)firstAvailableUIViewController;
+@end
+
+// AWEFeedVideoButton
+@interface AWEFeedVideoButton : UIButton
+@property (nonatomic, copy) void (^touchUpInsideBlock)(void);
+@end
+
+// AWEMusicCoverButton
+@interface AWEMusicCoverButton : UIButton
+@end
+
+// AWEAwemePlayVideoViewController
+@interface AWEAwemePlayVideoViewController : UIViewController
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey, id> *)change context:(void *)context;
+- (void)setVideoControllerPlaybackRate:(double)arg0;
+- (void)setIsAutoPlay:(BOOL)arg0;
+@end
+
+// AWEDanmakuItemTextInfo
+@interface AWEDanmakuItemTextInfo : NSObject
+- (void)setDanmakuTextColor:(id)arg1;
+- (UIColor *)colorFromHexStringForTextInfo:(NSString *)hexString;
+@end
+
+// AWECommentMiniEmoticonPanelView
+@interface AWECommentMiniEmoticonPanelView : UIView
+@end
+
+// AWEBaseElementView
+@interface AWEBaseElementView : UIView
+@end
+
+// AWETextViewInternal
+@interface AWETextViewInternal : UITextView
+@end
+
+// AWECommentPublishGuidanceView
+@interface AWECommentPublishGuidanceView : UIView
+@end
+
+// AWEPlayInteractionFollowPromptView
+@interface AWEPlayInteractionFollowPromptView : UIView
+@end
+
+// AWENormalModeTabBarTextView
+@interface AWENormalModeTabBarTextView : UIView
+@end
+
+// AWEPlayInteractionProgressController
+@interface AWEPlayInteractionProgressController : UIView
+- (UIViewController *)findViewController:(UIViewController *)vc ofClass:(Class)targetClass;
+@end
+
+// AWEAdAvatarView
+@interface AWEAdAvatarView : UIView
+@end
+
+// AWENormalModeTabBar
+@interface AWENormalModeTabBar : UIView
+@end
+
+// AWEPlayInteractionListenFeedView
+@interface AWEPlayInteractionListenFeedView : UIView
+@end
+
+// AWEFeedLiveMarkView
+@interface AWEFeedLiveMarkView : UIView
+@end
+
+// AWEURLModel
+@interface AWEURLModel : NSObject
+@property (nonatomic, copy) NSArray *originURLList;
+@end
+
+// AWEMusicModel
+@interface AWEMusicModel : NSObject
+@property (nonatomic, strong, readonly) AWEURLModel *playURL;
+@end
+
+// AWEVideoModel
+@interface AWEVideoModel : NSObject
+@property (nonatomic, strong, readonly) AWEURLModel *playURL;
+@property (nonatomic, strong, readonly) AWEURLModel *h264URL;
+@property (nonatomic, strong, readonly) AWEURLModel *coverURL;
+@end
+
+// AWEImageAlbumImageModel
+@interface AWEImageAlbumImageModel : NSObject
+@property (nonatomic, copy) NSArray *urlList;
+@end
+
+// AWEAwemeModel
+@interface AWEAwemeModel : NSObject
+@property (nonatomic, copy) NSString *ipAttribution;
+@property (nonatomic, copy) NSString *cityCode;
+@property (nonatomic, assign) BOOL isLive;
+@property (nonatomic, strong) AWEAwemeModel *currentAweme;
+@property (nonatomic, strong, readonly) AWEVideoModel *video;
+@property (nonatomic, strong) AWEMusicModel *music;
+@property (nonatomic, strong) NSArray<AWEImageAlbumImageModel *> *albumImages;
+@property (nonatomic, assign) NSInteger awemeType;
+@property (nonatomic, assign) NSInteger currentImageIndex;
+- (void)live_callInitWithDictyCategoryMethod:(id)arg1;
++ (id)liveStreamURLJSONTransformer;
++ (id)relatedLiveJSONTransformer;
++ (id)rawModelFromLiveRoomModel:(id)arg1;
++ (id)aweLiveRoom_subModelPropertyKey;
+@end
+
+// AWEPlayInteractionTimestampElement
+@interface AWEPlayInteractionTimestampElement : UIView
+@property (nonatomic, strong) AWEAwemeModel *model;
++ (BOOL)shouldActiveWithData:(id)arg1 context:(id)arg2;
+@end
+
+// AWEFeedTableViewController
+@interface AWEFeedTableViewController : UIViewController
+@property (nonatomic, assign) BOOL pureMode;
+@end
+
+// AWEFeedTableView
+@interface AWEFeedTableView : UIView
+@end
+
+// AWEPlayInteractionProgressContainerView
+@interface AWEPlayInteractionProgressContainerView : UIView
+@end
+
+// AFDFastSpeedView
+@interface AFDFastSpeedView : UIView
+@end
+
+// AWEUserWorkCollectionViewComponentCell
+@interface AWEUserWorkCollectionViewComponentCell : UICollectionViewCell
+@end
+
+// AWEFeedRefreshFooter
+@interface AWEFeedRefreshFooter : UIView
+@end
+
+// AWERLSegmentView
+@interface AWERLSegmentView : UIView
+@end
+
+// AWEBaseListViewController
+@interface AWEBaseListViewController : UIViewController
+- (void)applyBlurEffectIfNeeded;
+- (UILabel *)findCommentLabel:(UIView *)view;
+@end
+
+// AWEFeedTemplateAnchorView
+@interface AWEFeedTemplateAnchorView : UIView
+@end
+
+// AWEPlayInteractionSearchAnchorView
+@interface AWEPlayInteractionSearchAnchorView : UIView
+@end
+
+// AWETemplateHotspotView
+@interface AWETemplateHotspotView : UIView
+@end
+
+// AWEAwemeMusicInfoView
+@interface AWEAwemeMusicInfoView : UIView
+@end
+
+// AWEStoryContainerCollectionView
+@interface AWEStoryContainerCollectionView : UIView
+@end
+
+// AWELiveNewPreStreamViewController
+@interface AWELiveNewPreStreamViewController : UIViewController
+@end
+
+// CommentInputContainerView
+@interface CommentInputContainerView : UIView
+@end
+
+// AWELongVideoControlModel
+@interface AWELongVideoControlModel : NSObject
+- (BOOL)allowDownload;
+- (long long)preventDownloadType;
+@end
+
+// AWEFeedIPhoneAutoPlayManager
+@interface AWEFeedIPhoneAutoPlayManager : NSObject
+- (BOOL)isAutoPlayOpen;
+@end
+
+// AWEPlayInteractionUserAvatarElement
+@interface AWEPlayInteractionUserAvatarElement : UIView
+- (void)onFollowViewClicked:(UITapGestureRecognizer *)gesture;
+@end
+
+// AWEFeedProgressSlider
+@interface AWEFeedProgressSlider : UIView
+@end
+
+// AWEHPTopTabItemModel
+@interface AWEHPTopTabItemModel : NSObject
+- (void)setChannelID:(NSString *)channelID;
+@end
+
+// AWEFeedRootViewController
+@interface AWEFeedRootViewController : UIViewController
+- (BOOL)prefersStatusBarHidden;
+@end
+
+// AWEHPDiscoverFeedEntranceView
+@interface AWEHPDiscoverFeedEntranceView : UIView
+@end
+
+// AWENormalModeTabBarGeneralPlusButton
+@interface AWENormalModeTabBarGeneralPlusButton : UIButton
++ (id)button;
+@end
+
+// AWESettingBaseViewModel
+@interface AWESettingBaseViewModel : NSObject
+@property (nonatomic, weak) id controllerDelegate;
+@property (nonatomic, strong) NSArray *sectionDataArray;
+@property (nonatomic, assign) NSInteger colorStyle;
+@end
+
+// AWESettingsViewModel
+@interface AWESettingsViewModel : AWESettingBaseViewModel
+@property (nonatomic, copy) NSString *traceEnterFrom;
+@end
+
+// AWESettingItemModel
+@interface AWESettingItemModel : NSObject
+@property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *detail;
+@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, strong) NSString *iconImageName;
+@property (nonatomic, strong) NSString *svgIconImageName;
+@property (nonatomic, assign) NSInteger cellType;
+@property (nonatomic, assign) NSInteger colorStyle;
+@property (nonatomic, assign) BOOL isEnable;
+@property (nonatomic, assign) BOOL isSwitchOn;
+@property (nonatomic, copy) void (^cellTappedBlock)(void);
+@property (nonatomic, copy) void (^switchChangedBlock)(void);
+@end
+
+// AWESettingSectionModel
+@interface AWESettingSectionModel : NSObject
+@property (nonatomic, strong) NSString *sectionHeaderTitle;
+@property (nonatomic, assign) CGFloat sectionHeaderHeight;
+@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, strong) NSArray<AWESettingItemModel *> *itemArray;
+@end
+
+// AWESettingBaseViewController
+@interface AWESettingBaseViewController : UIViewController
+@property (nonatomic, strong) AWESettingsViewModel *viewModel;
+- (BOOL)useCardUIStyle;
+@end
+
+// AWENavigationBar
+@interface AWENavigationBar : UIView
+@property (nonatomic, strong) UILabel *titleLabel;
+@end
+
+// AWELongPressPanelBaseViewModel
+@interface AWELongPressPanelBaseViewModel : NSObject
+@property (nonatomic, strong) AWEAwemeModel *awemeModel;
+@property (nonatomic, strong) NSString *enterMethod;
+@property (nonatomic, assign) NSUInteger actionType;
+@property (nonatomic, strong) NSString *duxIconName;
+@property (nonatomic, strong) NSString *describeString;
+@property (nonatomic, assign) BOOL showIfNeed;
+@property (nonatomic, copy) void (^action)(void);
+@end
+
+// AWELongPressPanelViewGroupModel
+@interface AWELongPressPanelViewGroupModel : NSObject
+@property (nonatomic, assign) NSUInteger groupType;
+@property (nonatomic, strong) NSArray<AWELongPressPanelBaseViewModel *> *groupArr;
+@end
+
+// AWELongPressPanelTableViewController
+@interface AWELongPressPanelTableViewController : UIViewController
+- (NSArray *)dataArray;
+@end
+
+// AWEFeedCellViewController
+@interface AWEFeedCellViewController : UIViewController
+@end
+
+// UITextInputTraits
+@interface UITextInputTraits : NSObject
+- (void)setKeyboardAppearance:(UIKeyboardAppearance)appearance;
+@end
+
+#endif /* AwemeHeaders_h */
